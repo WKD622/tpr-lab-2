@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <sys/time.h>
 
 long double R_PI = 3.14159265358979323L;
 
@@ -38,11 +39,18 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
 }
 
 int main(int argc, char** argv)
-{
+{   
+    srand(time(NULL));
+    struct timeval tval_before, tval_after, tval_result;
+    gettimeofday(&tval_before, NULL);
     unsigned long long int number_of_shoots = strtoll(argv[1], NULL, 0);
     double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0);
     double pi = 4 * area_size;
-    printf("PI: %Lf\n", pi);
-    printf("DIF: %.14f\n", fabs(R_PI - pi));
+    gettimeofday(&tval_after, NULL);
+    timersub(&tval_after, &tval_before, &tval_result);
+    long double time_passed_in_seconds = (long double)tval_result.tv_sec + (long double)tval_result.tv_usec / 1000000;
+    printf("PI: %f\n", pi);
+    printf("TIME: %Lf\n", time_passed_in_seconds);
+    printf("DIF: %.14Lf\n", fabsl(R_PI - pi));
     return 0;
 }
