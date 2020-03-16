@@ -3,6 +3,10 @@
 #include <time.h>
 #include <math.h>
 
+
+long double R_PI = 3.14159265358979323L;
+
+
 double rand_value(double start, double end)
 {
     return (double)rand() / RAND_MAX * (end - start) + start;
@@ -33,10 +37,14 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
 }
 
-int main(){
-    unsigned long long int number_of_shoots = 10000000;
-    double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0); 
-    printf("%f\n", 4 * area_size);
+int main()
+{
+    double t = MPI_Wtime();
+    unsigned long long int number_of_shoots = strtoll(argv[1], NULL, 0);
+    double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0);
+    t = MPI_Wtime() - t;
+    printf("PI: %Lf\n", 4 * area_size);
+    printf("DIF: %.14f\n", fabs(R_PI - pi));
+    printf("TIME: %f\n\n", t);
     return 0;
 }
-
