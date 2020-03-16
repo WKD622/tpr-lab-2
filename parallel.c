@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
     if (world_rank == 0) {
         long double pi = ((long double) 4 * all_points_in_circle) / ((long double) number_of_points);
         printf("=== AND FOR %i PROCESSORS ===\n", world_size);
-        printf("PI: %Lf\n", pi);
+        printf("PI: %f\n", pi);
         printf("DIF: %.14f\n", fabs(R_PI - pi));
         printf("TIME: %f\n\n", t);
     }
