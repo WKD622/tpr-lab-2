@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0);
     t = MPI_Wtime() - t;
     double pi = 4 * area_size;
-    printf("PI: %Lf\n", pi);
+    printf("PI: %f\n", pi);
     printf("DIF: %.14f\n", fabs(R_PI - pi));
     printf("TIME: %f\n\n", t);
     return 0;
