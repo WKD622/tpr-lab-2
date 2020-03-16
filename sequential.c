@@ -48,7 +48,7 @@ int main(int argc, char **argv)
         timersub(&tval_after, &tval_before, &tval_result);
         long double time_passed_in_seconds = (long double)tval_result.tv_sec + (long double)tval_result.tv_usec / 1000000;
         printf("pi: %f\n", pi);
-        printf("time pased: %Lf\n", time_passed_in_seconds);
+        printf("time passed: %Lf\n", time_passed_in_seconds);
         printf("pi dif: %.14Lf\n", fabsl(R_PI - pi));
         return 0;
     }
