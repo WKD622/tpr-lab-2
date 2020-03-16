@@ -39,7 +39,7 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
 
 int main(int argc, char **argv)
 {
-    number_of_tries = strtoll(argv[2], NULL, 0);
+    int number_of_tries = strtoll(argv[2], NULL, 0);
     int i;
     for (i = 0; i < number_of_tries; i++)
     {
