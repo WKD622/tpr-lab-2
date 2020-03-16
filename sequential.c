@@ -20,19 +20,21 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
 {
     int success = 0;
     int loss = 0;
+    double rand_x, rand_y, origin_dist;
     unsigned long long int i = 0;
     for (i = 0; i < number_of_shoots; i++)
     {
-        double x = rand_value(x_start, x_end);
-        double y = rand_value(y_start, y_end);
+        rand_x = (double)(rand() / ((double)RAND_MAX));
+        rand_y = (double)(rand() / ((double)RAND_MAX));
 
-        double x_pow_value = x_2(x);
-        double y_pow_value = x_2(y);
-        double sum = x_pow_value + y_pow_value;
-        if (sum <= 1)
+        origin_dist = rand_x * rand_x + rand_y * rand_y;
+
+        if (origin_dist <= 1)
             success++;
-        else
+        else {
             loss++;
+        }   
+            
     }
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
 }
