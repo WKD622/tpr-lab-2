@@ -28,7 +28,7 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
         if (origin_dist <= 1)
             success++;
         else {
-            loss++
+            loss++;
         }
     }
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
