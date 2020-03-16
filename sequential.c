@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-
+#include <mpi.h>
 
 long double R_PI = 3.14159265358979323L;
 
