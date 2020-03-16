@@ -21,7 +21,7 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
 {
     int success = 0;
     int loss = 0;
-    unsigned long long int i = 0
+    unsigned long long int i = 0;
     for (i = 0; i < number_of_shoots; i++)
     {
         double x = rand_value(x_start, x_end);
