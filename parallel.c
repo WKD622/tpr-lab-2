@@ -47,9 +47,9 @@ int main(int argc, char **argv)
     if (world_rank == 0)
     {
         long double result = ((long double)4 * all_points_in_circle) / ((long double)number_of_points);
-        printf("PI: %Lf\n", result);
-        printf("DIF: %.14f\n", fabs(R_PI - result));
-        printf("TIME: %f\n\n", t);
+        printf("pi: %Lf\n", result);
+        printf("pi diff: %.14f\n", fabs(R_PI - result));
+        printf("time passed: %f\n\n", t);
     }
 
     MPI_Barrier(MPI_COMM_WORLD);

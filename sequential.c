@@ -11,30 +11,23 @@ double rand_value(double start, double end)
     return (double)rand() / RAND_MAX * (end - start) + start;
 }
 
-double x_2(double x)
-{
-    return pow(x, 2.0);
-}
-
 double monte_carlo(unsigned long long int number_of_shoots, double x_start, double x_end, double y_start, double y_end)
 {
     int success = 0;
     int loss = 0;
-    double rand_x, rand_y, origin_dist;
     unsigned long long int i = 0;
     for (i = 0; i < number_of_shoots; i++)
     {
-        rand_x = (double)(rand() / ((double)RAND_MAX));
-        rand_y = (double)(rand() / ((double)RAND_MAX));
+        double x = rand_value(x_start, x_end);
+        double y = rand_value(y_start, y_end);
 
-        origin_dist = rand_x * rand_x + rand_y * rand_y;
-
-        if (origin_dist <= 1)
+        double x_pow_value = pow(x, 2.0);
+        double y_pow_value = pow(x, 2.0);
+        double sum = x_pow_value + y_pow_value;
+        if (sum <= 1)
             success++;
-        else {
+        else
             loss++;
-        }   
-            
     }
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
 }
@@ -54,9 +47,9 @@ int main(int argc, char **argv)
         gettimeofday(&tval_after, NULL);
         timersub(&tval_after, &tval_before, &tval_result);
         long double time_passed_in_seconds = (long double)tval_result.tv_sec + (long double)tval_result.tv_usec / 1000000;
-        printf("PI: %f\n", pi);
-        printf("TIME: %Lf\n", time_passed_in_seconds);
-        printf("DIF: %.14Lf\n", fabsl(R_PI - pi));
+        printf("pi: %f\n", pi);
+        printf("time pased: %Lf\n", time_passed_in_seconds);
+        printf("pi dif: %.14Lf\n", fabsl(R_PI - pi));
         return 0;
     }
 }
