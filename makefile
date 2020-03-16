@@ -3,6 +3,6 @@ p:
 	mpiexec -machinefile ./allnodes	-np 2 ./parallel_c 100000
 
 s:
-	gcc -o sequential_c sequential.c 	
-	./sequential_c 100000
+	mpicc -o sequential_c sequential.c 		
+	mpiexec -machinefile ./allnodes	-np 1 ./sequential_c 100000
 
