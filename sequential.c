@@ -44,6 +44,5 @@ int main(int argc, char** argv)
     double pi = 4 * area_size;
     printf("PI: %Lf\n", pi);
     printf("DIF: %.14f\n", fabs(R_PI - pi));
-    printf("TIME: %f\n\n", t);
     return 0;
 }
