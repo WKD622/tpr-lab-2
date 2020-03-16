@@ -4,5 +4,5 @@ p:
 
 s:
 	gcc -o sequential_c sequential.c -lm
-	./sequential_c 100000000
+	./sequential_c 100000000 1
 

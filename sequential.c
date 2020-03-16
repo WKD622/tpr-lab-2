@@ -6,7 +6,6 @@
 
 long double R_PI = 3.14159265358979323L;
 
-
 double rand_value(double start, double end)
 {
     return (double)rand() / RAND_MAX * (end - start) + start;
@@ -38,19 +37,24 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
 }
 
-int main(int argc, char** argv)
-{   
-    srand(time(NULL));
-    struct timeval tval_before, tval_after, tval_result;
-    gettimeofday(&tval_before, NULL);
-    unsigned long long int number_of_shoots = strtoll(argv[1], NULL, 0);
-    double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0);
-    double pi = 4 * area_size;
-    gettimeofday(&tval_after, NULL);
-    timersub(&tval_after, &tval_before, &tval_result);
-    long double time_passed_in_seconds = (long double)tval_result.tv_sec + (long double)tval_result.tv_usec / 1000000;
-    printf("PI: %f\n", pi);
-    printf("TIME: %Lf\n", time_passed_in_seconds);
-    printf("DIF: %.14Lf\n", fabsl(R_PI - pi));
-    return 0;
+int main(int argc, char **argv)
+{
+    number_of_tries = strtoll(argv[2], NULL, 0);
+    int i;
+    for (i = 0; i < number_of_tries; i++)
+    {
+        srand(time(NULL));
+        struct timeval tval_before, tval_after, tval_result;
+        gettimeofday(&tval_before, NULL);
+        unsigned long long int number_of_shoots = strtoll(argv[1], NULL, 0);
+        double area_size = monte_carlo(number_of_shoots, 0.0, 1.0, 0.0, 1.0);
+        double pi = 4 * area_size;
+        gettimeofday(&tval_after, NULL);
+        timersub(&tval_after, &tval_before, &tval_result);
+        long double time_passed_in_seconds = (long double)tval_result.tv_sec + (long double)tval_result.tv_usec / 1000000;
+        printf("PI: %f\n", pi);
+        printf("TIME: %Lf\n", time_passed_in_seconds);
+        printf("DIF: %.14Lf\n", fabsl(R_PI - pi));
+        return 0;
+    }
 }
