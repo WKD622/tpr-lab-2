@@ -37,7 +37,7 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
     return ((double)success / ((double)loss + (double)success)) * (x_end - x_start) * (y_end - y_start);
 }
 
-int main()
+int main(int argc, char** argv)
 {
     double t = MPI_Wtime();
     unsigned long long int number_of_shoots = strtoll(argv[1], NULL, 0);
