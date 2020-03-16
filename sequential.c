@@ -37,7 +37,8 @@ int main(int argc, char** argv) {
  
     double avg = 0.0, std_dev = 0.0, avg_t = 0.0;
     double* pi_results = (double*) malloc(sizeof(double) * calc_repeat);
-     for (int i = 0; i < calc_repeat; i++) {
+    int i;
+     for (i = 0; i < calc_repeat; i++) {
         clock_t t = clock();
         pi_results[i] = calc_pi(number_of_points);
         avg_t += clock() - t;
@@ -46,7 +47,7 @@ int main(int argc, char** argv) {
     avg /= calc_repeat;
     avg_t = avg_t / (CLOCKS_PER_SEC * calc_repeat);
        
-    for (int i = 0; i < calc_repeat; i++) {
+    for (i = 0; i < calc_repeat; i++) {
         std_dev += (pi_results[i] - avg) * (pi_results[i] - avg);
     }
     std_dev = sqrt(std_dev / calc_repeat);
