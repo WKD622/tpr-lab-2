@@ -18,7 +18,7 @@ double monte_carlo(unsigned long long int number_of_shoots, double x_start, doub
     long long int circle_points = 0;
     double rand_x, rand_y, origin_dist;
     unsigned long long int i = 0;
-    for (i = 0; i < number_of_points; i++)
+    for (i = 0; i < number_of_shoots; i++)
     {
         rand_x = (double)(rand() / ((double)RAND_MAX));
         rand_y = (double)(rand() / ((double)RAND_MAX));
